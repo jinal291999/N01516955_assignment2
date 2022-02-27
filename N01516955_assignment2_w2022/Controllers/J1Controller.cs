@@ -9,101 +9,38 @@ namespace N01516955_assignment2_w2022.Controllers
 {
     public class J1Controller : ApiController
     {
-        //GET : /api/J1/Menu/{burger}/{drink}/{side}/{dessert}
+        // Problem taken J1 - The New CCC (Canadian Calorie Counting)
+        /// <summary>
+        /// Input the index of Burger, Drinks, Sides and Desserts calories and it returns the total calories of the meal
+        /// </summary>
+        /// <param name="Burger">The index of burger choice </param>
+        /// <param name="Drink">The index of drink choice </param>
+        /// <param name="Side">The index of side choice </param>
+        /// <param name="Dessert">The index of dessert </param>
+        /// <returns>The total calories of the meal is</returns>
+        /// example:
+        //GET : http://localhost/api/J1/Menu/4/4/4/4  --> The total calories of the meal is:0
+        //GET : http://localhost/api/J1/Menu/1/2/3/4  --> The total calories of the meal is:691
+
+
+
         [HttpGet]
-        [Route("api/J1/Menu/{Burger}")]
-        public int Menu(int Burger int Drink int Side int Dessert)
+        [Route("api/J1/Menu/{Burger}/{Drink}/{Side}/{Dessert}")]
+        public string Menu(int Burger, int Drink, int Side, int Dessert)
         {
-            if (Burger == 1)
-            {
-                return 461;
-            }
-            else if (Burger == 2)
-            {
-                return 431;
-            }
-            else if (Burger == 3)
-            {
-                return 420;
-            }
-            else
-            {
-                return 0;
             
+            int[] burger_c = { 461, 431, 420, 0 };
+            int[] drink_c = { 130, 160, 118, 0 };
+            int[] side_c = { 100, 57, 70, 0 };
+            int[] dessert_c = { 167, 266, 75, 0 };
 
-            if (Side == 1)
-            {
-                return 130;
-            }
-            else if (Side == 2)
-            {
-                return 160;
-            }
-            else if (Side == 3)
-            {
-                return 118;
-            }
-            else
-            {
-                return 0;
-            }
+            
+            int sum_of_calories = burger_c[Burger - 1] + drink_c[Drink - 1] + side_c[Side - 1] + dessert_c[Dessert - 1];
+
+            string result = "The total calories of the meal is:" + " " + sum_of_calories;
+            return result;
         }
     }
-          //  [Route("api/J1/Menu/{Burger}")]
-          //  public int Burger(int Burger)
-           // {
-              
-          //  }
+}
 
-            [Route("")]
-            public int Side(int Side)
-            {
-                // side
-                
 
-            [Route("Drink")]
-            public int Drink(int Drink)
-            {
-                if (Drink == 1)
-                {
-                    return 130;
-                }
-                else if (Drink == 2)
-                {
-                    return 160;
-                }
-                else if (Drink == 3)
-                {
-                    return 118;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-
-            [Route("Dessert")]
-            public int Dessert(int Dessert)
-            {
-
-                // dessert
-                if (Dessert == 1)
-                {
-                    return 130;
-                }
-                else if (Dessert == 2)
-                {
-                    return 160;
-                }
-                else if (Dessert == 3)
-                {
-                    return 118;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-
-        }
-    }
